@@ -11,11 +11,11 @@ class ListDishesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var dishes:[Dish] = [
-        .init(id: "id1", name: "Curry", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Indomie", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0)
+        .init(id: "id1", name: "Curry", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
+        .init(id: "id1", name: "Indomie", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
+        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
+        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
+        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30)
     ]
     
     var categories: DishCategory!

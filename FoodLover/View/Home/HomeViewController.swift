@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class HomeViewController: UIViewController {
 
@@ -13,31 +14,32 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var specialCollectionView: UICollectionView!
-    var categories: [DishCategory] = [
-        .init(id: "id1", name: "Africa Dish 1", image: "https://picsum.photos/100/200"),
-        .init(id: "id2", name: "Africa Dish 2", image: "https://picsum.photos/100/200"),
-        .init(id: "id3", name: "Africa Dish 3", image: "https://picsum.photos/100/200"),
-        .init(id: "id4", name: "Africa Dish 4", image: "https://picsum.photos/100/200"),
-        .init(id: "id5", name: "Africa Dish 5", image: "https://picsum.photos/100/200")
-    ]
+    var categories: [DishCategory] = []
     
-    var popularDish: [Dish] = [
-        .init(id: "id1", name: "Curry", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Indomie", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0)
-    ]
+    var popularDish: [Dish] = []
     
-    var chefDish: [Dish] = [
-        .init(id: "id1", name: "Pecel", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pecel", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-        .init(id: "id1", name: "Pecel", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30.0),
-    ]
+    var chefDish: [Dish] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NetworkService.shared.myFirstRequest()
+        ProgressHUD.show()
+        NetworkService.shared.fetchAllCategories{(result) in
+            switch result {
+                
+            case .success(let allDishes):
+                ProgressHUD.dismiss()
+                self.categories = allDishes.categories ?? []
+                self.popularDish = allDishes.populars ?? []
+                self.chefDish = allDishes.specials ?? []
+                
+                self.categoryCollectionView.reloadData()
+                self.popularCollectionView.reloadData()
+                self.specialCollectionView.reloadData()
+            case .failure(let error):
+                print("error is :\(error.localizedDescription)")
+                ProgressHUD.showError(error.localizedDescription)
+            }
+        }
 
         // Do any additional setup after loading the view.
         title = "Foodie"

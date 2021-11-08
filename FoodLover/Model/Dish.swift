@@ -8,14 +8,14 @@
 import Foundation
 
 
-struct Dish {
+struct Dish: Codable {
     let id: String?
     let name: String?
     let description: String?
     let image: String?
-    let calories: Double?
+    let calories: Int?
     
     var formattedCalories: String {
-        return String(format: "%.2f calories", calories ?? 0)
-    }
+            return "\(calories ?? 0) calories"
+        }
 }

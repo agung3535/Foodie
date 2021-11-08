@@ -7,5 +7,6 @@ target 'FoodLover' do
 
   # Pods for FoodLover
  pod "Kingfisher" 
-
+ pod "ProgressHUD"
+ pod "IQKeyboardManagerSwift"
 end

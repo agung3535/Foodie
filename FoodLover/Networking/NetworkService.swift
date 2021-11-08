@@ -14,15 +14,28 @@ struct NetworkService {
     
     private init() {}
     
-    func myFirstRequest() {
-        request(route: .temp, method: .get, type: String.self,
-                completion: { _ in })
+    func myFirstRequest(completion: @escaping(Result<[Dish], Error>) -> Void) {
+        request(route: .temp, method: .get, completion: completion)
     }
+    
+    
+    func fetchAllCategories(completion: @escaping(Result<AllDishes, Error>) -> Void) {
+           request(route: .fetchAllCategories, method: .get, completion: completion)
+    }
+    
+   
+    
+    func placeOrdeR(dishId: String, name: String, completion: @escaping(Result<Order, Error>) -> Void) {
+        let params = ["name": name]
+        request(route: .placeOrder(dishId), method: .post, parameters: params, completion: completion)
+    }
+    
+    
+    
     
     private func request<T: Codable> (route: Route,
                                      method: Method,
                                      parameters:[String: Any]? = nil,
-                                     type: T.Type,
                                      completion:@escaping (Result<T, Error>) -> Void) {
         
         guard let request = createRequest(route: route, method: method, parameters: parameters) else {
@@ -35,7 +48,7 @@ struct NetworkService {
             if let data = data {
                 result = .success(data)
                 let responseString = String(data: data, encoding: .utf8) ?? "Could not strignify our data"
-                print("The response is:\(responseString)")
+//                print("The response is:\(responseString)")
             } else if let error = error {
                 result = .failure(error)
                 print("The error is:\(error.localizedDescription)")

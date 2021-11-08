@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4918AE482738FCEE009E22C8 /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918AE472738FCEE009E22C8 /* ApiResponse.swift */; };
+		4918AE4C27397418009E22C8 /* AllDishes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918AE4B27397417009E22C8 /* AllDishes.swift */; };
 		4924A4B327343B9B00B669F3 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4924A4B127343B9B00B669F3 /* CategoryCollectionViewCell.swift */; };
 		4924A4B427343B9B00B669F3 /* CategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4924A4B227343B9B00B669F3 /* CategoryCollectionViewCell.xib */; };
 		4924A4B627343DD400B669F3 /* DishCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4924A4B527343DD400B669F3 /* DishCategory.swift */; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		39DF0B158C6DADA18E28DD0F /* Pods_FoodLover.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodLover.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4918AE472738FCEE009E22C8 /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		4918AE4B27397417009E22C8 /* AllDishes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDishes.swift; sourceTree = "<group>"; };
 		4924A4B127343B9B00B669F3 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		4924A4B227343B9B00B669F3 /* CategoryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		4924A4B527343DD400B669F3 /* DishCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCategory.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 				4924A4B527343DD400B669F3 /* DishCategory.swift */,
 				496103102734D98600215976 /* Dish.swift */,
 				4942FB8727381175008164C9 /* Order.swift */,
+				4918AE4B27397417009E22C8 /* AllDishes.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				4924A4B327343B9B00B669F3 /* CategoryCollectionViewCell.swift in Sources */,
 				49504D732733E33000D4FB09 /* AppDelegate.swift in Sources */,
 				49504D752733E33000D4FB09 /* SceneDelegate.swift in Sources */,
+				4918AE4C27397418009E22C8 /* AllDishes.swift in Sources */,
 				49504D8A273402F300D4FB09 /* OnboardingViewController.swift in Sources */,
 				4942FB9027381ABE008164C9 /* Method.swift in Sources */,
 				49504D8D2734077000D4FB09 /* UIViewExtenstions.swift in Sources */,

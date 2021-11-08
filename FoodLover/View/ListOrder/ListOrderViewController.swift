@@ -13,9 +13,9 @@ class ListOrderViewController: UIViewController {
     
     
     var orders:[Order] = [
-        .init(id: "id1", name: "Agung", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30.0)),
-        .init(id: "id1", name: "Kyomi", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30.0)),
-        .init(id: "id1", name: "Natasha", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30.0))
+        .init(id: "id1", name: "Agung", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30)),
+        .init(id: "id1", name: "Kyomi", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30)),
+        .init(id: "id1", name: "Natasha", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30))
     
     ]
     override func viewDidLoad() {
