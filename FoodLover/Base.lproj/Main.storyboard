@@ -339,18 +339,46 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoP-Px-bvd">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-cart" translatesAutoresizingMaskIntoConstraints="NO" id="CNh-3z-Ndz">
+                                        <rect key="frame" x="79" y="276" width="256" height="256"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No orders yet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MCe-Fa-CwN">
+                                        <rect key="frame" x="0.0" y="584" width="414" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="CNh-3z-Ndz" firstAttribute="centerX" secondItem="OoP-Px-bvd" secondAttribute="centerX" id="36h-Qo-jkp"/>
+                                    <constraint firstAttribute="trailing" secondItem="MCe-Fa-CwN" secondAttribute="trailing" id="GiA-fa-uvH"/>
+                                    <constraint firstItem="MCe-Fa-CwN" firstAttribute="top" secondItem="CNh-3z-Ndz" secondAttribute="bottom" constant="52" id="OxV-e5-WLD"/>
+                                    <constraint firstItem="MCe-Fa-CwN" firstAttribute="centerX" secondItem="OoP-Px-bvd" secondAttribute="centerX" id="b1X-el-VHO"/>
+                                    <constraint firstItem="CNh-3z-Ndz" firstAttribute="centerY" secondItem="OoP-Px-bvd" secondAttribute="centerY" id="dRS-SO-H33"/>
+                                    <constraint firstItem="MCe-Fa-CwN" firstAttribute="leading" secondItem="OoP-Px-bvd" secondAttribute="leading" id="fPb-Qd-hwt"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Fas-hE-YRX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="B1K-MN-lTH" secondAttribute="bottom" id="7mu-V2-Odj"/>
                             <constraint firstItem="B1K-MN-lTH" firstAttribute="trailing" secondItem="Fas-hE-YRX" secondAttribute="trailing" id="GD6-dp-Vpt"/>
+                            <constraint firstItem="OoP-Px-bvd" firstAttribute="top" secondItem="Fas-hE-YRX" secondAttribute="top" id="Gdg-iN-Zyq"/>
+                            <constraint firstAttribute="bottom" secondItem="OoP-Px-bvd" secondAttribute="bottom" id="LlJ-F3-3XZ"/>
                             <constraint firstItem="B1K-MN-lTH" firstAttribute="top" secondItem="Fas-hE-YRX" secondAttribute="top" id="ZuE-IN-MMv"/>
+                            <constraint firstItem="OoP-Px-bvd" firstAttribute="leading" secondItem="Fas-hE-YRX" secondAttribute="leading" id="dgm-or-FI0"/>
+                            <constraint firstItem="OoP-Px-bvd" firstAttribute="trailing" secondItem="Fas-hE-YRX" secondAttribute="trailing" id="p2a-ES-gVL"/>
                             <constraint firstItem="B1K-MN-lTH" firstAttribute="leading" secondItem="vvd-jr-RbV" secondAttribute="leading" id="scs-WQ-Of0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="JEX-Bj-I6R"/>
                     <connections>
+                        <outlet property="emptyOrder" destination="OoP-Px-bvd" id="Bu6-MI-usR"/>
                         <outlet property="orderTblView" destination="B1K-MN-lTH" id="bQb-9Y-qfJ"/>
                     </connections>
                 </viewController>
@@ -536,6 +564,7 @@
     </scenes>
     <resources>
         <image name="cart.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="empty-cart" width="256" height="256"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

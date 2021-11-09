@@ -6,18 +6,15 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ListOrderViewController: UIViewController {
 
     @IBOutlet weak var orderTblView: UITableView!
     
+    @IBOutlet weak var emptyOrder: UIView!
     
-    var orders:[Order] = [
-        .init(id: "id1", name: "Agung", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30)),
-        .init(id: "id1", name: "Kyomi", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30)),
-        .init(id: "id1", name: "Natasha", dish: .init(id: "id1", name: "Indomie", description: "This is the best noodle", image: "https://picsum.photos/100/200", calories: 30))
-    
-    ]
+    var orders:[Order] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,6 +23,25 @@ class ListOrderViewController: UIViewController {
         orderTblView.delegate = self
         orderTblView.dataSource = self
         registerCells()
+        ProgressHUD.show()
+        NetworkService.shared.fetchOrder{(result) in
+            switch result {
+            case .success(let data):
+                ProgressHUD.dismiss()
+                self.orders = data
+                self.orderTblView.reloadData()
+                if data.count == 0 {
+                    self.emptyOrder.isHidden = false
+                    self.orderTblView.isHidden = true
+                }else {
+                    self.emptyOrder.isHidden = true
+                    self.orderTblView.isHidden = false
+                }
+            case .failure(let error):
+                print("Error is: \(error.localizedDescription)")
+                ProgressHUD.showError(error.localizedDescription)
+            }
+        }
         
         // Do any additional setup after loading the view.
     }

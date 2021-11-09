@@ -6,17 +6,12 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class ListDishesViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var dishes:[Dish] = [
-        .init(id: "id1", name: "Curry", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
-        .init(id: "id1", name: "Indomie", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30),
-        .init(id: "id1", name: "Pizza", description: "This is the best curry that I've to tasted", image: "https://picsum.photos/100/200", calories: 30)
-    ]
+    var dishes:[Dish] = []
     
     var categories: DishCategory!
 
@@ -27,6 +22,18 @@ class ListDishesViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         title = categories.name
+        ProgressHUD.show()
+        NetworkService.shared.fetchCategoriesDish(catId: categories.id) { (result) in
+            switch result {
+            case .success(let data):
+                ProgressHUD.dismiss()
+                self.dishes = data
+                self.tableView.reloadData()
+            case .failure(let error):
+                print("error is :\(error.localizedDescription)")
+                ProgressHUD.showError(error.localizedDescription)
+            }
+        }
         registerCell()
     }
     
